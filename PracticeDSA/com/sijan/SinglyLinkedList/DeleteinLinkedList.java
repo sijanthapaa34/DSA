@@ -1,6 +1,6 @@
-package com.sijan;
+package com.sijan.SinglyLinkedList;
 
-public class InsertinLinkedList {
+public class DeleteinLinkedList {
 	private ListNode head;
 	private static class ListNode{
 		private int data;
@@ -10,23 +10,19 @@ public class InsertinLinkedList {
 			this.next = null;
 		}
 	}
-	
-	public void insert(int position, int value) {
-		ListNode node = new ListNode(value);
-		if (position == 1) {
-			node.next = head;
-			head = node;
+	public void delete(int position) {
+		if(position == 1) {
+			head = head.next;
 		}
 		else {
 			ListNode previous = head;
 			int count = 1;
-			while(count <value -1) {
+			while (count <position-1) {
 				previous = previous.next;
-				count ++;	
+				count++;
 			}
 			ListNode current = previous.next;
-			node.next = current;
-			previous.next = node;
+			previous.next = current.next;
 		}
 	}
 	public void display() {
@@ -37,7 +33,7 @@ public class InsertinLinkedList {
 		}
 	}
 	public static void main(String[] args) {
-		InsertinLinkedList sll = new InsertinLinkedList();
+		DeleteinLinkedList sll = new DeleteinLinkedList();
 		sll.head = new ListNode(10);
 		ListNode second = new ListNode(1);
 		ListNode third = new ListNode(8);
@@ -48,7 +44,8 @@ public class InsertinLinkedList {
 		third.next = fourth;
 		
 		sll.display();
-		sll.insert(2,2);
+		sll.delete(2);
+		System.out.println(' ');
 		sll.display();
 	}
 }
